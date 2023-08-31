@@ -20,7 +20,9 @@
 # Livrable attendu
 • Un rapport écrit des réalisations produites, de 5 à 10 pages.
 • Une synthèse orale du travail à prévoir, de 5 minutes (support ppt, vidéo démo).
-
+---
+---
+# La construction des modèles sont disponibles dans le notebook
 ---
 ---
 # Utilisation de l'application
