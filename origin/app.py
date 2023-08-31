@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from keras import regularizers
 from PIL import Image
 from keras.utils import to_categorical
-
+import cv2
 
 class ImagePredictionApp:
 
