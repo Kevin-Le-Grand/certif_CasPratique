@@ -56,8 +56,6 @@ class ImagePredictionApp:
         self.prediction_label_genre.pack(anchor='w')
         self.prediction_label_poste = tk.Label(root, text="", anchor='w')
         self.prediction_label_poste.pack(anchor='w')
-        self.prediction_label_fiabilite = tk.Label(root, text="")
-        self.prediction_label_fiabilite.pack()
         
 
     def load_model_OG(self):
@@ -84,7 +82,7 @@ class ImagePredictionApp:
             self.photo = ImageTk.PhotoImage(Image.open(file_path))
             self.imagedisp_label.config(image=self.photo)
 
-    def affich_user(self,prediction_user,fiabilite):
+    def affich_user(self,prediction_user):
         id_employe=prediction_user
         nom,annee_embauche,genre,poste = recherche_ID(prediction_user)
         self.prediction_label_id.config(text=f"ID : {id_employe}")
@@ -92,7 +90,6 @@ class ImagePredictionApp:
         self.prediction_label_annee.config(text=f"Année d\'embauche : {annee_embauche}")
         self.prediction_label_genre.config(text=f"Genre : {genre}")
         self.prediction_label_poste.config(text=f"Poste : {poste}")
-        self.prediction_label_fiabilite.config(text=f"FIABILITE DE {fiabilite*100}%")
 
     
 
@@ -103,29 +100,28 @@ class ImagePredictionApp:
             # image_array = tf.image.resize(image_array, (224, 224))
             
             # Prédiction pour determiner si oeil droit ou gauche
-            detect_eye = detect_ODG(self.image_prep)
-
+            detect_eye,fiabilite = detect_ODG(self.image_prep)
+            
             if detect_eye == 0:
-                self.prediction_label.config(text=f"Oeil droit scanné...")
+                self.prediction_label.config(text=f"Oeil droit scanné avec une fiabilité de {fiabilite}%")
                 # Utlisiation du modele model_OG 
                 probs = self.model_OD.predict(np.array([self.image_prep]))
                 # Recherche de l'argument qui a la meilleure performance
                 prediction_user = np.argmax(probs)
                 # Inversion de l'encodage
                 decode_prediction_user = self.encodeur_OD.inverse_transform([prediction_user])
-                # Récupération de la probabilité
-                fiabilite = round(float(probs[0][prediction_user]),4)
-                self.affich_user(decode_prediction_user[0],fiabilite)
-                # POUR GRAPHIQUE
+                # Affichage 
+                    # des caractéristiques
+                self.affich_user(decode_prediction_user[0])
+                    # Pour le graphique des probabilités
                 draw_bar_chart(self,probs)
 
             else:
-                self.prediction_label.config(text=f"Oeil gauche scanné...")
+                self.prediction_label.config(text=f"Oeil gauche scanné avec une fiabilité de {fiabilite}%")
                 probs = self.model_OG.predict(np.array([self.image_prep]))
                 prediction_user = np.argmax(probs)
                 decode_prediction_user = self.encodeur_OG.inverse_transform([prediction_user])
-                fiabilite = round(float(probs[0][prediction_user]),4)
-                self.affich_user(decode_prediction_user[0],fiabilite)
+                self.affich_user(decode_prediction_user[0])
                 draw_bar_chart(self,probs)
         else:
             self.prediction_label.config(text="Aucune image sélectionnée")
