@@ -22,7 +22,7 @@
 • Une synthèse orale du travail à prévoir, de 5 minutes (support ppt, vidéo démo).
 ---
 ---
-# La construction des modèles sont disponibles dans le notebook
+# La construction des modèles est disponible dans le notebook
 ---
 ---
 # Utilisation de l'application
