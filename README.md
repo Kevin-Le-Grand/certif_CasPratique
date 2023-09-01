@@ -26,14 +26,12 @@
 ---
 ---
 # Utilisation de l'application
-## Télécharger dans un dossier les dossiers et fichier suivants :
-1. dans le dossier code :
-- joblib : les encodeurs 
-- OD_classif, ODG_classif, OG_classif : les modèles
-- save_pour_appli : les images test qui ont été sauvegardées 
-- app.py : permet de lancer l'application
-- employees_info.json : fichier où sont stockés les informations des employés
-- functions.py : Contient quelques fonctions permettant de faire fonctionner l'application
-
-2. Le fichier requirements.txt pour obtenir les bonnes librairies.
-
+1. Créez un environnement virtuel
+2. Créez un dossier "projet" dans lequel vous pouvez copier l'intégralité du repository
+3. Placez vous dans le dossier projet/certif_cas_pratique et tapez la commande suivante : ```pip install requirements.txt```
+4. Pour lancer l'application streamlit :
+- Placez-vous dans le dossier projet/certif_cas_pratique/app_streamlit
+- Tapez la commande ```streamlit run app.py```
+5. Pour l'application Tkinter :
+- Placez-vous dans le dossier projet/certif_cas_pratique/code
+- Tapez la commande ```python run app.py```
