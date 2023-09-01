@@ -28,10 +28,10 @@
 # Utilisation de l'application
 1. Créez un environnement virtuel
 2. Créez un dossier "projet" dans lequel vous pouvez copier l'intégralité du repository
-3. Placez vous dans le dossier projet/certif_cas_pratique et tapez la commande suivante : ```pip install requirements.txt```
+3. Placez vous dans le dossier projet et tapez la commande suivante : ```pip install requirements.txt```
 4. Pour lancer l'application streamlit :
-- Placez-vous dans le dossier projet/certif_cas_pratique/app_streamlit
+- Placez-vous dans le dossier projet/app_streamlit
 - Tapez la commande ```streamlit run app.py```
 5. Pour l'application Tkinter :
-- Placez-vous dans le dossier projet/certif_cas_pratique/code
+- Placez-vous dans le dossier projet/code
 - Tapez la commande ```python run app.py```
